@@ -6,12 +6,17 @@ class Pygtk < Formula
   sha1 '344e6a32a5e8c7e0aaeb807e0636a163095231c2'
 
   depends_on 'pkg-config' => :build
-  depends_on :x11
+  depends on :x11 => :recommended
   depends_on 'glib'
-  depends_on 'gtk+'
+  if build.with? 'x'
+    depends_on 'gtk+'
+    depends_on 'py2cairo'
+  else
+    depends_on 'gtk+' => ['without-x']
+    depends_on 'py2cairo' => ['without-x']
+  end
   depends_on 'atk'
   depends_on 'pygobject'
-  depends_on 'py2cairo'
   depends_on 'libglade' if build.include? 'glade'
 
   option :universal
