@@ -12,9 +12,10 @@ class Librsvg < Formula
     sha1 "276af00164ceb754199b2aed99079378b581579e" => :lion
   end
 
-  depends_on :x11
+  depends_on :x11 => :recommended
   depends_on 'pkg-config' => :build
-  depends_on 'gtk+'
+  depends_on 'gtk+' => :recommended
+  depends_on 'gtk+3' => :optional
   depends_on 'libcroco'
   depends_on 'libgsf' => :optional
 
